@@ -1,5 +1,5 @@
 #### Sobre
-Esta biblioteca ajuda a verificar a permissão de um usuário em determinados métodos ou em classes.   
+Esta biblioteca ajuda a verificar o `nivel de permissão` de um usuário em determinados métodos ou em classes.   
 Em seu `Banco de dados`, geralmente na tabela `usuario` existe uma coluna com nome `perfil_fk`.  
 Em `perfil_fk` cabe uma `chave estrangeira` para a tabela `perfil`, onde define se ele é `ADMIN`, `MODERADOR`, `USUARIO`..   
 Esse `perfil_fk` é inserido em uma `Session` assim que usuário loga, dai então define-se as permissões em cada página de acordo com esta `Session`.   
