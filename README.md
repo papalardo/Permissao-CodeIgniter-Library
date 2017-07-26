@@ -59,8 +59,9 @@ Exemplo
 ```php
 function __construct(){   
       parent::__construct();   
-        $this->permissoes->library('permissoes');    
-        $this->auth->_perfisAceitos(array(1,2,3)); 
+        $this->load->library('permissoes');   
+        ...
+        $this->permissoes->_perfisAceitos(array(1,2,3)); 
         # OU
         $perfisAceitos = array(1,4,6);
         $this->permissoes->_perfisAceitos($perfisAceitos);
