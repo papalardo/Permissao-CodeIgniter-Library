@@ -1,11 +1,24 @@
-#### Biblioteca para verificar permissão em uma página.
-Library para Verificar Permissões no Code Igniter
+#### Sobre
+Esta biblioteca ajuda a verificar a permissão de um usuário em determinados métodos ou em classes.   
+Em seu `Banco de dados`, geralmente na tabela `usuario` existe uma coluna com nome `perfil_fk`.  
+Em `perfil_fk` cabe uma `chave estrangeira` para a tabela `perfil`, onde define se ele é `ADMIN`, `MODERADOR`, `USUARIO`.. 
+Esse `perfil_fk` é inserido em uma `Session` assim que usuário loga, dai então define-se as permissões em cada página de acordo com esta `Session`.
+> Porque não facilitar sua vida ?! :`)
 
-#### Como iniciar
-###### Primeiro, chame a biblioteca com o código abaixo.
+---
+### Como iniciar   
+Chame a biblioteca com o código abaixo.
+> `Nas classes`
 ```php
 $this->load->library('permissoes'); 
 ```
+> `Autoload`  
+Vá até o arquivo `config/autoload.php` e edite a seguinte linha.
+```php
+$autoload['libraries'] = array('database','session','permissoes');
+```
+
+__OBS: A vantagem do Autoload é que não precisa iniciar a library em toda classe que criar__
 ---
 
 #### Configuração   
