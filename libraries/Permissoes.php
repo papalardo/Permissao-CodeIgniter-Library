@@ -2,8 +2,8 @@
     class Permissoes
     {
         var $perfis = array(); # Array de perfis aceitos.
-        var $nomePaginaSeJaLogado = 'publicador'; # https://www.example.com/PAINEL
-        var $nomeSessionLogado = 'logado'; # $_SESSION['logado']; $_SESSION['logged']
+        var $nomePaginaSeJaLogado = 'painel'; # https://www.example.com/PAINEL
+        var $nomeSessionLogado = 'logado'; # $_SESSION['logado']; $_SESSION['logged'] == TRUE
         var $nomeSessionPerfil = 'perfil'; # $_SESSION['perfil']; $_SESSION['permission']
         var $nomePaginaError403 = 'errors/html/error_403.php'; 
         
@@ -11,10 +11,8 @@
     {
         $this->CI =& get_instance();
         $acesso = FALSE;
-        
         for ($i = 0; $i <= count($perfis)-1; $i++){
-           if ($_SESSION['perfil'] == $perfis[$i]) 
-            { 
+           if ($_SESSION['perfil'] == $perfis[$i]){ 
                 $i = count($perfis);
                 $acesso = TRUE;
             } 
@@ -25,14 +23,13 @@
     function _perfisAceitos($perfis){
         $this->CI =& get_instance();
         if (isset($_SESSION[$this->nomeSessionLogado])){
-            if ($this->verificarPerfis($perfis) == FALSE)
-            {
+            if ($this->verificarPerfis($perfis) == FALSE){
+                # IF de Usuário Não autorizado.
                 $this->CI->load->view($this->nomePaginaError403);
                 die($this->CI->output->get_output());
             }
-        } 
-        else 
-        {
+        } else {
+                # Else de Usuário Não logado.
                 $this->CI->load->view($this->nomePaginaError403);
                 die($this->CI->output->get_output());
         }
