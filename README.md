@@ -1,24 +1,30 @@
 #### Sobre
 Esta biblioteca ajuda a verificar a permissão de um usuário em determinados métodos ou em classes.   
 Em seu `Banco de dados`, geralmente na tabela `usuario` existe uma coluna com nome `perfil_fk`.  
-Em `perfil_fk` cabe uma `chave estrangeira` para a tabela `perfil`, onde define se ele é `ADMIN`, `MODERADOR`, `USUARIO`.. 
-Esse `perfil_fk` é inserido em uma `Session` assim que usuário loga, dai então define-se as permissões em cada página de acordo com esta `Session`.
-> Porque não facilitar sua vida ?! :`)
+Em `perfil_fk` cabe uma `chave estrangeira` para a tabela `perfil`, onde define se ele é `ADMIN`, `MODERADOR`, `USUARIO`..   
+Esse `perfil_fk` é inserido em uma `Session` assim que usuário loga, dai então define-se as permissões em cada página de acordo com esta `Session`.   
+
+#### *Porque não facilitar sua vida ?! :`)*
 
 ---
-### Como iniciar   
+### Iniciando..  
+
+Coloque o arquivo `Permissoes.php` dentro da pasta `application/libraries/`   
+depois..   
+
 Chame a biblioteca com o código abaixo.
 > `Nas classes`
 ```php
 $this->load->library('permissoes'); 
 ```
+ou
 > `Autoload`  
 Vá até o arquivo `config/autoload.php` e edite a seguinte linha.
 ```php
-$autoload['libraries'] = array('database','session','permissoes');
+$autoload['libraries'] = array('permissoes');
 ```
 
-__OBS: A vantagem do Autoload é que não precisa iniciar a library em toda classe que criar__
+#### *OBS: A vantagem do Autoload é que não precisa iniciar a library em toda classe que criar*
 ---
 
 #### Configuração   
@@ -33,6 +39,7 @@ e `$nomePaginaError403` é o caminho da página que mostrará a página de acess
 #### Página de LOGIN
 Este método é para verificar se o usuário ja está logado, evitando assim que caso o usuário esteja logado tente ir ou caia tela de login.   
 Na página de login, só se faz a verificação se o usuário já está logado.
+#### *Use dentro do método.. se fizer no construtor, nunca conseguirá fazer Logout*   
 
 ```php
 ...
@@ -46,7 +53,7 @@ public function index(){
 
 #### Página COMUM
 O que irá mudar aqui será o parâmetro no `_perfisAceitos(array())`
-
+#### *Dica: Use dentro do construtor, assim evita reescrita desnecessária. A não ser que queira restringir um método especifico para um tipo de perfil*
 
 Exemplo
 ```php
