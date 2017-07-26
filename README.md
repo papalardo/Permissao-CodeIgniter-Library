@@ -7,17 +7,18 @@ Library para Verificar Permissões no Code Igniter
 $this->load->library('permissoes'); 
 ```
 ---
-###### Usuários recebem um número como para definir seu perfil, geralmente definido pelo `ID` na tabela `PERFIL` no Banco de Dados.
-###### Esta biblioteca restrigi o acesso à uma classe ou página de acordo com este `ID`.
+
+#### Configuração   
+Abra o arquivo em `libraries/Permissoes.php`   
+A configuração é simples, definir o nome das suas `Sessions` e o caminho do arquivo com erro `403 Não autorizado`.   
+use `$nomeSessionLogado = 'logado'` que seria como `$_SESSION['logado']`   
+use `$nomeSessionPerfil = 'perfil'` que seria como `$_SESSION['perfil']`   
+e `$nomePaginaError403` é o caminho da página que mostrará a página de acesso não autorizado.  
+
 ---
-#### Configuração
-###### Abra o arquivo em `libraries/Permissoes.php`   
-###### A configuração é simples, definir o nome das suas `Sessions`.   
-###### use `$nomeSessionLogado = 'logado'` que seria como `$_SESSION['logado']`   
-###### use `$nomeSessionPerfil = 'perfil'` que seria como `$_SESSION['perfil']`   
----
+
 #### Página de LOGIN
-Este método é para verificar se o usuário ja está logado, evitando assim que caso o usuário esteja logado apresente tela de login.   
+Este método é para verificar se o usuário ja está logado, evitando assim que caso o usuário esteja logado tente ir ou caia tela de login.   
 Na página de login, só se faz a verificação se o usuário já está logado.
 
 ```php
@@ -45,3 +46,6 @@ function __construct(){
         $this->permissoes->_perfisAceitos($perfisAceitos);
     }
 ```
+
+#### Feito isso é so testar
+# :')
